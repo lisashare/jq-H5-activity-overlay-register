@@ -3,6 +3,8 @@
 
 此demo简单实现了弹出层用户注册逻辑，代码lowB的很，新手可以借鉴
 
+请在服务器(wampserver,phpstudy...)环境下打开页面，activity文件夹为手写接口
+
 ```
 data:2018/5/24  1.0 初稿   author:**
 ```
