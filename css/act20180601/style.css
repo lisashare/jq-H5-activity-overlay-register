@@ -1,0 +1,434 @@
+body,
+dd,
+dl,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+ol,
+p,
+select,
+textarea,
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+img {
+  border: none;
+  display: block;
+  width: 100%;
+}
+article,
+aside,
+blockquote,
+body,
+button,
+code,
+dd,
+details,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+input,
+legend,
+li,
+menu,
+nav,
+ol,
+p,
+pre,
+section,
+select,
+td,
+textarea,
+th,
+ul {
+  outline: 0;
+  border: none;
+  background-color: transparent;
+}
+a,
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+body * {
+  -webkit-text-size-adjust: 100%;
+}
+button,
+input {
+  -webkit-appearance: none;
+}
+dfn,
+em,
+i {
+  font-style: normal;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+a:hover {
+  opacity: .9;
+  filter: alpha(opacity=90);
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clear:after,
+.clear:before {
+  content: "";
+  display: table;
+}
+.clear:after {
+  clear: both;
+}
+.active {
+  display: block !important;
+}
+.kdHiden {
+  display: none;
+}
+.btn_active {
+  background-color: #638ffc !important;
+}
+.circle {
+  width: .28rem;
+  height: .28rem;
+  background-color: #638ffc;
+  -webkit-border-radius: .14rem;
+  -ms-border-radius: .14rem;
+  border-radius: .14rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: #78b8ff;
+  font-family: Arial, Helvetica, STHeiTi, sans-serif;
+}
+.bodyHtmlNo {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 400;
+}
+.dialog_submit {
+  width: 11.4rem;
+  height: 11.24rem;
+  background: #fff;
+  margin: 0 auto;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-border-radius: .22rem;
+  -ms-border-radius: .22rem;
+  border-radius: .22rem;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 500;
+}
+.dialog_submit .icon_close {
+  width: 1.04rem;
+  height: 1.04rem;
+  position: absolute;
+  right: -0.24rem;
+  top: -0.36rem;
+}
+.dialog_submit .icon_close .icon_close {
+  width: 1.04rem;
+  height: 1.04rem;
+}
+.dialog_submit .form-group {
+  width: 9.2rem;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin: 1.6rem auto 0;
+}
+.dialog_submit .form-group .form-item .input-group {
+  width: 100%;
+  display: block;
+}
+.dialog_submit .form-group .form-item .input-text {
+  font-size: .64rem;
+  color: #999;
+  width: 9.2rem;
+  height: 1.76rem;
+  padding-left: 1.64rem;
+  border: 2px solid #638ffc;
+  -webkit-border-radius: .88rem;
+  border-radius: 0.88rem;
+}
+.input-text {
+  width: 9.2rem !important;
+}
+.dialog_submit .form-group .form-item .btn-yanzheng {
+  padding: 0;
+  font-size: .6rem;
+  color: #638ffc;
+  width: 4rem;
+  height: 1.2rem;
+  text-align: center;
+  border-left: 1px solid #999;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.dialog_submit .form-group .form-item .multi-group {
+  width: 9.2rem;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.dialog_submit .form-group .form-item .form-warning {
+  font-size: .56rem;
+  color: #e22d2d;
+  text-indent: .64rem;
+  height: 1.08rem;
+  padding-top: 0.2rem;
+}
+.dialog_submit .form-group .form-item .icon_phono {
+  width: .54rem;
+  height: .75rem;
+  background-image: url(../../images/act20180601/icon_phono.png);
+  background-repeat: no-repeat;
+  background-size: 96%;
+  position: absolute;
+  left: .64rem;
+  top: 0.6rem;
+}
+.dialog_submit .form-group .form-item .icon_right {
+  width: .60rem;
+  height: .70rem;
+  background-size: 96%;
+  background-repeat: no-repeat;
+  background-image: url(../../images/act20180601/icon_right.png);
+  position: absolute;
+  left: .64rem;
+  top: 0.62rem;
+}
+.dialog_submit .form-group .form-item:last-child {
+  font-size: .72rem;
+  color: #fff;
+  width: 9.2rem;
+  height: 1.76rem;
+  text-align: center;
+  display: block;
+  -webkit-border-radius: .88rem;
+  border-radius: .88rem;
+  background: #999;
+}
+
+.dialog_success{width:11.4rem;height:12.1rem;margin:0 auto;background-image:url(../../images/act20180601/bg_tc.png);background-repeat:no-repeat;background-size:11.4rem 12.1rem;position:fixed;left:50%;top:50%;-webkit-transform:translate3d(-50%,-50%,0);-ms-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);z-index:500}
+.dialog_success .icon_close {
+  width: 1.04rem;
+  height: 1.04rem;
+  position: absolute;
+  right: -0.24rem;
+  top: 0.36rem;
+}
+.dialog_success .icon_close .icon_close {
+  width: 1.04rem;
+  height: 1.04rem;
+}
+.dialog_success .baiduLink {
+  width: 9.2rem;
+  margin: 4.7rem auto 0;
+}
+.dialog_success .baiduLink .circle {
+  left: .12rem;
+  top: 0.28rem;
+}
+.dialog_success .baiduLink .item {
+  font-size: .6rem;
+  color: #333;
+  text-indent: .72rem;
+  line-height: 1.08rem;
+  position: relative;
+}
+.dialog_success .baiduLink .item a.link {
+  display: inline-block;
+  margin-left: .72rem;
+  text-indent: 0;
+  color: #638ffc;
+  white-space: normal;
+  word-break: break-all;
+  text-decoration: underline;
+  line-height: 0.72rem;
+}
+.dialog_success .baiduLink .tip {
+  font-size: .44rem;
+  color: #999;
+  text-indent: 0.72rem;
+}
+.dialog_success .baiduLink .getMore {
+  font-size: .72rem;
+  color: #fff;
+  width: 9.2rem;
+  height: 1.76rem;
+  text-align: center;
+  display: block;
+  margin-top: .6rem;
+  -webkit-border-radius: .88rem;
+  border-radius: .88rem;
+  background: #638ffc;
+}
+.wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.wrap .section_million,
+.wrap .section_question {
+  width: 15rem;
+  height: 26.68rem;
+}
+.wrap .section_million img,
+.wrap .section_question img {
+  width: 15rem;
+  height: 26.68rem;
+}
+.wrap .section_dry {
+  margin: 1.2rem auto 2rem;
+  padding: 0 0.98rem;
+}
+.wrap .section_dry img {
+  width: 13.04rem;
+  height: 33.86rem;
+}
+.wrap .section_program {
+  margin-bottom: 2rem;
+  padding: 0 0.98rem;
+}
+.wrap .section_program img {
+  width: 13.04rem;
+  height: 44.7rem;
+}
+.wrap .section_dream {
+  padding: 0 0.98rem 5.08rem;
+}
+.wrap .section_dream img {
+  width: 13.04rem;
+  height: 24.24rem;
+}
+.wrap .section {
+  background:#78b8ff;
+  position: relative;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.wrap .section .button_djhq {
+  width: 8.52rem;
+  height: 1.92rem;
+  background-image: url(../../images/act20180601/button_djhq.gif);
+  background-repeat: no-repeat;
+  background-size: 8.52rem 1.92rem;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
+}
+.wrap .section .button_djlq {
+  width: 6.4rem;
+  height: 1.52rem;
+  background-image: url(../../images/act20180601/button_djlq.png);
+  background-repeat: no-repeat;
+  background-size: 6.4rem 1.52rem;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.72rem;
+}
+.wrap .section .button_djxz {
+  width: 6.4rem;
+  height: 1.52rem;
+  background-image: url(../../images/act20180601/button_djxz.png);
+  background-repeat: no-repeat;
+  background-size: 6.4rem 1.52rem;
+  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5.36rem;
+}
+.wrap .footer1 {
+  display: none;
+  width: 100%;
+  height: 4.48rem;
+  z-index: 300;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.wrap .footer1 .button_ljlq {
+  width: 4.96rem;
+  height: 1.88rem;
+  background-image: url(../../images/act20180601/button_ljlq.png);
+  background-repeat: no-repeat;
+  background-size: 4.96rem 1.88rem;
+  position: absolute;
+  right: .76rem;
+  bottom: .8rem;
+}
+.kdHidenImp {
+  display: none!important;
+}

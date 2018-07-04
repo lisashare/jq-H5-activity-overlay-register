@@ -1,0 +1,124 @@
+<html style="font-size: 25px;"><head>
+    <meta charset="utf-8">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="full-screen" content="no">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="false">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,width=device-width,viewport-fit=cover">
+    <meta content="yes" name="apple-mobile-web-app-capable">     
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">     
+	<meta content="telephone=no" name="format-detection">
+    <title>弹出层注册demo</title>
+    <link rel="stylesheet" type="text/css" href="./css/act20180601/style.css">
+    <script type="text/javascript" async="" src="https://assets.growingio.com/vds.js"></script><script type="text/javascript">
+        (function(){
+            setRem();
+            window.addEventListener('orientationchange' in window?"orientationchange":"resize",setRem);
+            function setRem(){
+                var html = document.getElementsByTagName('html')[0];
+                var pageWidth = html.getBoundingClientRect().width;
+                html.style.fontSize = pageWidth/15+'px';
+            }
+        })();
+    </script>
+    <style type="text/css">
+        /* 网络提示错误 */
+        .m-toast-pop {z-index:10000;display: none; position: fixed;width: 100%;top: 0;bottom: 0;right: 0;overflow: auto;text-align: center;}
+        .m-toast-inner {z-index:10000;position: absolute;left:50%;top:50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);text-align: center;}
+        .m-toast-inner-text{white-space:nowrap;z-index:10000;display: inline-block;padding: 0 0.2rem;font-size: 0.7rem;color: #FFFFFF;line-height: 1rem;opacity: 0.7;background: #000000;border-radius: 0.6rem;}
+        .dialog_submit .form-group .form-item .input-text { padding-left:1.64rem; width:7.56rem; text-indent:0; }
+    </style>
+<script type="text/javascript">
+    var growingioId='a6ae658051d997eb';
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function(){
+      _vds.push(['setAccountId', growingioId]);
+      (function() {
+        var vds = document.createElement('script');
+        vds.type='text/javascript';
+        vds.async = true;
+        vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'assets.growingio.com/vds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(vds, s);
+      })();
+    })();
+</script>
+</head>
+<body>
+<input type="hidden" id="appKd" value="https://gio.ren/reXMDY3|https://gio.ren/r3jnw53">
+<div id="mark_mask" style="display:none;position:fixed;top:40px;left:0;z-index:99999999;height:1000px;width:100%;background:rgba(0,0,0,0.4);">
+	
+</div>
+<div id="m-toast-pop" class="m-toast-pop">
+    <div class="m-toast-inner"><div class="m-toast-inner-text" id="m-toast-inner-text"></div></div>
+</div>
+<div class="mask kdHiden"></div>
+<div class="dialog_input dialog_submit kdHiden">
+    <div class="form-group">
+        <div class="form-item">
+            <label class="input-group">
+                <i class="icon_input icon_phono"></i>
+                <input type="tel" name="phone" class="input-text mobile" maxlength="11" value="手机号">
+            </label>
+            <div class="form-warning form-warning-phone"></div>
+        </div>
+        <div class="form-item">
+            <div class="multi-group">
+                <label class="input-group">
+                    <i class="icon_input icon_right"></i>
+                    <input type="tel" name="code" class="input-text vercode" maxlength="6" value="验证码">
+                </label>
+                <button type="button" id="enableSendBtn" data-role="sendAuthCodeBtn" class="btn btn-yanzheng">发送验证码</button>
+            </div>
+            <div class="form-warning form-warning-code"></div>
+        </div>
+        <button type="button" data-role="registerBtn" class="form-item">立即提交</button>
+    </div>
+    <div class="icon_close"><img src="./images/act20180601/icon_close.png"></div>
+</div>
+<div class="dialog_input dialog_success kdHiden">
+    <div class="baiduLink">
+        <p class="item">
+            <span class="circle"></span>百度网盘链接：<br>
+            <a class="link" href=""></a>
+        </p>
+        <p class="item">
+            <span class="circle"></span>密码：<span class="passwordNum"></span>
+        </p>
+        <p class="tip">温馨提示：截屏保存，方便随时提取</p>
+        <button type="button" class="getMore androidApp kdHidenImp">查看更多创业好项目</button>
+        <button type="button" class="getMore  iosApp kdHidenImp" onclick="downLoadApp.iosApp('kuaidao://')">查看更多创业好项目</button>
+    </div>
+    <div class="icon_close"><img src="./images/act20180601/icon_close.png"></div>
+</div>
+<div class="wrap">
+	<!--第一张图片-->
+    <div class="section section_million">
+        <img src="./images/act20180601/images_noe.png">
+        <a href="javascript:void(0)" class="button_djhq layer"></a>
+    </div>
+    <!--第二张图片-->
+    <div class="section section_question">
+    	<img src="./images/act20180601/images_two.png"></div>
+    <!--第三张图片-->
+    <div class="section section_dry">
+        <div></div><img src="./images/act20180601/images_three.png">
+        <a href="javascript:void(0);" class="button_djlq layer"></a>
+    </div>
+    <!--第四张图片-->
+    <div class="section section_program"><img src="./images/act20180601/images_four.png"></div>
+    <!--第五张图片-->
+    <div class="section section_dream">
+        <img src="./images/act20180601/images_five.png">
+        <a href="javascript:void(0);" class="button_djxz androidApp kdHidenImp"></a>
+        <a href="javascript:void(0);" class="button_djxz iosApp kdHidenImp" onclick="downLoadApp.iosApp('kuaidao://')"></a>
+    </div>
+    <footer class="footer1" style="display: none;">
+        <img src="./images/act20180601/bg_float.png">
+        <a href="javascript:void(0);" class="button_ljlq layer"></a>
+    </footer>
+</div>
+<script type="text/javascript" src="./js/zepto.js"></script>
+
+<script src="./js/act20180601/index.js"></script>

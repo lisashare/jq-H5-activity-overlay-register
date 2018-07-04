@@ -1,0 +1,433 @@
+﻿/*时间转换*/
+function formatMsgTime  (timespan){ 
+    var data = new Date(timespan);           //设置时间
+    var now = new Date();                    //现在的时间
+    var year = data.getFullYear();           //获取年份
+    var month = data.getMonth() + 1;         //获取月份+1
+    month = month < 10 ? ('0' + month) : month;   //月份小于10，将获取到的月份前连接0
+    var day = data.getDate();              	 //获取日期    data.getDay() 星期
+    day = day < 10 ? ('0' + day) : day;      //日期小于10，将获取到的日期前连接0
+    var hour = data.getHours();   			 //获取小时  
+    hour = hour < 10 ? ('0' + hour) : hour;  //小时 小于10，将获取到的日期前连接0
+    var minute = data.getMinutes();  		 //分钟
+    minute = minute < 10 ? ('0' + minute) : minute;
+    var timeSpanStr;						 //
+    milliseconds = now - data;               //毫秒：现在和传入时间的差
+    if (milliseconds < 1000 * 60 * 30) {     //1秒*60 --1分钟*30 半小时  --- ‘刚刚’
+        timeSpanStr = '刚刚';
+    } else if (1000 * 60 * 30 <= milliseconds && milliseconds < 1000 * 60 * 60) {     		//大于等于半个小时小于 1小时 --- ‘分钟前’   向下取整
+        timeSpanStr = Math.floor((milliseconds / (1000 * 60))) + '分钟前';
+    } else if (1000 * 60 * 60 * 1 <= milliseconds && milliseconds < 1000 * 60 * 60 * 24) {  //大于等于1小时小于1天
+        timeSpanStr = Math.floor(milliseconds / (1000 * 60 * 60)) + '小时前';
+    }else if (milliseconds >= 1000 * 60 * 60 * 24 ) {
+        timeSpanStr =year+'-'+month +'-'+day ;          //最后大于等于一天，显示年月日
+    }
+    return timeSpanStr;
+}
+//下载判断 
+var ua = window.navigator.userAgent.toLowerCase();     //获取设备信息
+function testApp(url) {  
+    var timeout, t = 1000, hasApp = true;  //开关 
+    setTimeout(function () {  			   //延迟两秒执行一次
+        if (hasApp) { 
+            $('.openApp1').attr('href','kuaidao://kuaidao.app.com/open');    
+            return false; 
+        } else {  
+           if (ua.match(/iPhone\sOS/i) == "iphone os") {   //不区分大小写的判断 ios
+               
+            } else if(ua.match(/Android/i) == "android") { //安卓
+              /*获取地址*/
+              var lcoaltionUrl=window.location.href;
+              var cha=lcoaltionUrl.substring(0,lcoaltionUrl.indexOf("/mobile"));
+              if(cha== 'http://kuaidaoservice-manager-mobile-test.kuaidaoapp.com'){
+                //测试
+                window.location.href='https://fir.im/pyx1';
+              }else if(cha == 'http://kuaidaoservice-manager-mobile-pre.kuaidaoapp.com'){
+                //预生产
+                window.location.href='https://fir.im/lezj';
+              }else if(cha == 'https://m.kuaidao.cn'){
+                //生产
+                window.location.href='https://fir.im/430epro';
+              }
+                
+            }
+            return false;
+        }  
+        document.body.removeChild(ifr);     	   //判断后将iframe移除
+    }, 2000)  
+  
+    var t1 = Date.now();  
+    var ifr = document.createElement("iframe");   //创建一个iframe
+    ifr.setAttribute('src', url);                 //设置属性
+    ifr.setAttribute('style', 'display:none');    //设置样式
+    document.body.appendChild(ifr);    			  //将ifr插入到body中
+    timeout = setTimeout(function () {    		  												//一开始时间短，不进行判断设备
+         var t2 = Date.now();  
+         if (!t1 || t2 - t1 < t + 100) {   //延迟1s进入的时间与 之前的时间 小于 1s+100
+             hasApp = false;  
+         }  
+    }, t);  
+}
+/*iso*/
+function testApp1(url) {  
+    var timeout, t = 1000, hasApp = true;  
+    setTimeout(function () {  
+        if (hasApp) {  
+            
+        } else {  
+            //if(ua.match(/iPhone\sOS/i) == "iphone os"){
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                    
+                }else{
+                    window.location.href='https://itunes.apple.com/cn/app/id1317693979';
+                }
+            //}
+        }  
+        document.body.removeChild(ifr);  
+    }, 2000)  
+  
+    var t1 = Date.now();  
+    var ifr = document.createElement("iframe");  
+    ifr.setAttribute('src', url);  
+    ifr.setAttribute('style', 'display:none');  
+    document.body.appendChild(ifr);  
+    timeout = setTimeout(function () {  
+         var t2 = Date.now();  
+         if (!t1 || t2 - t1 < t + 100) {  
+             hasApp = false;  
+         }  
+    }, t);  
+}
+//弹窗组件
+//提示下载App弹窗
+$.fn.alert = function(event){
+    var str='';
+    str="<div class='mask'></div><div class='con'><img src='img/share.png'></div>";
+    event.prepend(str);
+    $('html,body').addClass("overHidden");
+    $('.con,.mask').on('click',function(){
+      $('.mask,.con').remove();					//点击遮罩
+      $('html,body').removeClass("overHidden");
+    })
+}
+//提示用浏览器打开弹窗
+/*$.fn.down = function(event){
+    var str='';
+    str='<div class="mask"></div><div class="con1"><div class="tou"><img src="img/arrows.png" alt=""></div><div class="he"><img src="img/alert.png" alt=""></div></div>';
+    event.prepend(str);
+    $('html,body').addClass("overHidden");
+    $('.con1,.mask').on('click',function(){
+      $('.mask,.con1,.he').remove();
+      $('html,body').removeClass("overHidden");
+    })
+}*/
+//点击计算器提示下载App
+/*$.fn.calculator = function(event){
+    var str='';
+    str='<div class="mask"></div><div class="con2"><img src="branddetail/images/fenxiang.png" alt=""></div></div>';
+    event.prepend(str);
+    $('html,body').addClass("overHidden");
+    $('.con2,.mask').on('click',function(){
+      $('.mask,.con2').remove();
+      $('html,body').removeClass("overHidden");
+    })
+}*/
+//点击关闭按钮关闭蒙层和弹窗
+$('.he').on('click',function(){
+    $('.mask').addClass('unhide');
+    $('.con1').addClass('unhide');
+    $('html,body').removeClass("overHidden");
+})
+$(".mask").click(function(){
+    $(".mask").addClass("unhide");
+    $('.con1').addClass("unhide");        
+    $('html,body').removeClass("overHidden");      
+})
+$('.con1').on('click',function(){
+  $('.mask').addClass('unhide');
+  $('.con1').addClass('unhide');
+  $('html,body').removeClass("overHidden");  
+})
+//弹窗组件结束
+/*百万现金任性抢下载广点通*/
+function testApp2(url) {  
+    var timeout, t = 1000, hasApp = true;  
+    setTimeout(function () {  
+        if (hasApp) { 
+            $('.openApp2').attr('href','kuaidao://kuaidao.app.com/open');
+            return false;
+        } else {  
+           if (ua.match(/iPhone\sOS/i) == "iphone os") {
+               
+            } else if(ua.match(/Android/i) == "android") {
+              /*获取地址*/
+              var lcoaltionUrl=window.location.href;
+              var cha=lcoaltionUrl.substring(0,lcoaltionUrl.indexOf("/mobile"));
+              if(cha== 'http://kuaidaoservice-manager-mobile-test.kuaidaoapp.com'){
+                //测试
+                window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1394293520795';
+              }else if(cha == 'http://kuaidaoservice-manager-mobile-pre.kuaidaoapp.com'){
+                //预生产
+                window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1394293520795';
+              }else if(cha == 'https://m.kuaidao.cn'){
+                //生产
+                window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1394293520795';
+              }
+                
+            }
+            return false;
+        }  
+        document.body.removeChild(ifr);  
+    }, 2000)  
+  
+    var t1 = Date.now();  
+    var ifr = document.createElement("iframe");  
+    ifr.setAttribute('src', url);  
+    ifr.setAttribute('style', 'display:none');  
+    document.body.appendChild(ifr);  
+    timeout = setTimeout(function () {  
+         var t2 = Date.now();  
+         if (!t1 || t2 - t1 < t + 100) {  
+             hasApp = false;  
+         }  
+    }, t);  
+}
+/*iso*/
+function testApp3(url) {  
+    var timeout, t = 1000, hasApp = true;  
+    setTimeout(function () {  
+        if (hasApp) {  
+            
+        } else {  
+            //if(ua.match(/iPhone\sOS/i) == "iphone os"){
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                    
+                }else{
+                    window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1394293520795';
+                }
+            //}
+        }  
+        document.body.removeChild(ifr);  
+    }, 2000)  
+  
+    var t1 = Date.now();  
+    var ifr = document.createElement("iframe");  
+    ifr.setAttribute('src', url);  
+    ifr.setAttribute('style', 'display:none');  
+    document.body.appendChild(ifr);  
+    timeout = setTimeout(function () {  
+         var t2 = Date.now();  
+         if (!t1 || t2 - t1 < t + 100) {  
+             hasApp = false;  
+         }  
+    }, t);  
+}
+/*百万现金任性抢结束广点通*/
+
+/*获取地址*/
+var theRequests='';
+var url = location.search; 					//获取url中"?"符后的字串    ?email=someone@example.com
+var theRequests = new Object();  
+if (url.indexOf("?") != -1) {   			//如果url有？，就从第一个下标截取
+  var str = url.substr(1);   					
+  strs = str.split("&");   
+  for(var i = 0; i < strs.length; i ++) {   
+     theRequests[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+  }   
+}   
+theRequests= theRequests.id;                //获取地址中的id的值
+/*百万现金任性抢下载百度流*/
+function testApp4(url) {  
+    var timeout, t = 1000, hasApp = true;  
+    setTimeout(function () {  
+        if (hasApp) { 
+            $('.openApp4').attr('href','kuaidao://kuaidao.app.com/open');
+            return false;
+        } else {  
+           if (ua.match(/iPhone\sOS/i) == "iphone os") {
+               
+            } else if(ua.match(/Android/i) == "android") {
+              /*获取地址*/
+              if(theRequests == 1){
+                window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1396350532219';
+              }else if(theRequests == 2){
+                window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1396350532220';
+              }
+            return false;
+              }
+        }  
+        document.body.removeChild(ifr);  
+    }, 2000)  
+  
+    var t1 = Date.now();  
+    var ifr = document.createElement("iframe");  
+    ifr.setAttribute('src', url);  
+    ifr.setAttribute('style', 'display:none');  
+    document.body.appendChild(ifr);  
+    timeout = setTimeout(function () {  
+         var t2 = Date.now();  
+         if (!t1 || t2 - t1 < t + 100) {  
+             hasApp = false;  
+         }  
+    }, t);  
+}
+/*iso*/
+function testApp5(url) {  
+    var timeout, t = 1000, hasApp = true;  
+    setTimeout(function () {  
+        if (hasApp) {  
+            
+        } else {  
+            //if(ua.match(/iPhone\sOS/i) == "iphone os"){
+                if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+                    
+                }else{
+                    if(theRequests == 1){
+                      window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1396350532219';
+                    }else if(theRequests == 2){
+                      window.location.href='http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1396350532220';
+                    }
+                }
+            //}
+        }  
+        document.body.removeChild(ifr);  
+    }, 2000)  
+  
+    var t1 = Date.now();  
+    var ifr = document.createElement("iframe");  
+    ifr.setAttribute('src', url);  
+    ifr.setAttribute('style', 'display:none');  
+    document.body.appendChild(ifr);  
+    timeout = setTimeout(function () {  
+         var t2 = Date.now();  
+         if (!t1 || t2 - t1 < t + 100) {  
+             hasApp = false;  
+         }  
+    }, t);  
+}
+/*百万现金任性抢下载结束百度流*/
+window.onload=function(){
+    //testApp3('kuaidao://');
+    var ua1 = window.navigator.userAgent.toLowerCase();
+    if (ua.match(/iPhone\sOS/i) == "iphone os") { 
+        if(ua1.match(/MicroMessenger/i) == 'micromessenger' || ua1.match(/WeiBo/i) == "weibo"){
+          //alert(ua1.match(/MicroMessenger/i) == 'micromessenger')
+            $('.down').on('click',function(){
+             // alert(211)
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+           $('.down1').on('click',function(){
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+            $('.cashDown').on('click',function(){
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+             $('.BDdown').on('click',function(){
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+        }
+    } else if(ua.match(/Android/i) == "android") {
+        $('.openApp').addClass('unhide');
+        $('.openApp1').removeClass('unhide');
+        $('.openApp3').addClass('unhide');
+        $('.openApp2').removeClass('unhide');
+        $('.openApp5').addClass('unhide');
+        $('.openApp4').removeClass('unhide');
+        if(ua1.match(/MicroMessenger/i) == 'micromessenger'){
+           $('.down').on('click',function(){
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+            $('.down1').on('click',function(){
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+            $('.cashDown').on('click',function(){
+             // alert(211)
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+            $('.BDdown').on('click',function(){
+             // alert(211)
+               $('.mask').removeClass('unhide');
+               $('.con1').removeClass('unhide');
+               $('html,body').addClass("overHidden");
+            })
+        }else{
+            $('.openApp1').on('click',function(){
+                testApp('kuaidao://kuaidao.app.com/open');
+            })
+             $('.openApp2').on('click',function(){
+                testApp2('kuaidao://kuaidao.app.com/open');
+            })
+             $('.openApp4').on('click',function(){
+                testApp4('kuaidao://kuaidao.app.com/open');
+            })
+        }
+        if(ua1.match(/WeiBo/i) == "weibo"){
+            $('.down').on('click',function(){
+                $(this).attr('href','https://fir.im/pyx1');
+            })
+             $('.cashDown').on('click',function(){
+                $(this).attr('href','http://a.app.qq.com/o/simple.jsp?pkgname=com.kuaidao.app.application&ckey=CK1394293520795');
+            })
+              $('.BDdown').on('click',function(){
+                $(this).attr('href','https://gio.ren/reOKLle');
+            })
+        }
+
+    }
+}
+
+/*获取地址*/
+var lcoaltionUrl=window.location.href;
+var cha=lcoaltionUrl.substring(0,lcoaltionUrl.indexOf("/mobile"));
+if(cha== 'http://kuaidaoservice-manager-mobile-test.kuaidaoapp.com' || cha == 'http://kuaidaoservice-manager-mobile-pre.kuaidaoapp.com'){
+    $('.telPhone a').attr('href','tel:010-53579589')
+}else if(cha == 'https://m.kuaidao.cn'){
+    $('.telPhone a').attr('href','tel:010-53579588')
+}
+
+//判断手机是否是iPhoneX
+function isIphoneX(){
+  if(/iphone/gi.test(navigator.userAgent) && (screen.height == 812 && screen.width == 375)){   //设备信息符合的话，就绝对定位设置最小高度 ， 否则其他就fixed定位
+   // alert('是');
+    $('[data-control="FOOTER"]').css({
+        "position":'absolute'
+    })
+    $('.content').css({
+        "min-height":'23.5em'
+    })
+    $('.content1').css({
+        "min-height":'23.5em'
+    })
+  }else{
+      $('[data-control="FOOTER"]').css({
+        "position":'fixed'
+      })
+  }
+}
+isIphoneX();
+
+//失去焦点函数
+// function hideKeyboard() {
+//     document.activeElement.blur();
+//     $("input").blur();
+// };
+function byeInput() {
+  var el = document.activeElement;
+  if (el && ['input', 'textarea'].indexOf(el.tagName.toLocaleLowerCase()) !== -1) {
+    el.blur();
+  }
+}
